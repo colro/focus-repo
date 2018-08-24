@@ -11,13 +11,8 @@ if action == "update" then
 		if fs.exists(package) == true then
 			fs.delete(package)
 		end
-		local download = http.get("https://raw.github.com/colro/colroos/Colro/Programs/" .. package) --This will make 'download' hold the contents of the file.
-		local handle = download.readAll() --Reads everything in download
-		download.close() --remember to close download!
-		local file = fs.open(package,"w") --opens the file with the permissions to write.
-		file.write(handle) --writes all the stuff in handle to the file 'startup'.
-		file.close() --remember to close download!
-		print(package .. " Updated")	
+		shell.run("wget https://raw.githubusercontent.com/colro/focus-repo/master/" .. package .. " /Colro/Programs/" .. package) --This will make 'download' hold the contents of the file.
+		print(package .. " Updated")
 	end
 end
 
